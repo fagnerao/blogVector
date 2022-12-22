@@ -42,7 +42,7 @@ export default function Pagina({post}){
 export async function getServerSideProps({ query }){
   
  const slug = query.slug
- const res   = await fetch (`http://localhost:3001/postBySlug?slug=${slug}`)
+ const res   = await fetch (`${process.env.baseURL}/postBySlug?slug=${slug}`)
  const post = await res.json()
  
   return {

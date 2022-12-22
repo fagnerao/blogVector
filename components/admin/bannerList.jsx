@@ -1,18 +1,17 @@
 
         import React, {useState, useEffect, useContext} from 'react'
         import api from '../../pages/api/api';
-        import FileUpload from './fileuploader';
+        import BannerUpload from './bannerUploader';
         import { BiCheckDouble, BiXCircle, BiCommentEdit, BiTrash ,BiLink} from "react-icons/bi";
 
         import { userLoginContext } from '../../pages/contexts/userDataContext'
         import Router from 'next/router';
-import Image from 'next/image';
+        import Image from 'next/image';
 
         export default function BannerList(){
 
           const {verifyUser} = useContext(userLoginContext);
-          console.log(verifyUser)
-  
+           
           useEffect(() => {
             if(verifyUser != true){
               Router.push('/')
@@ -84,10 +83,7 @@ import Image from 'next/image';
                     setMessage();
                     setTypeMessage();
                     
-                    var elem = document.getElementById("UploadImages");
-                    elem.parentNode.removeChild(elem);
-                    
-                  });
+                    });
         
                   // upadate banner list
                   flagUpdate();
@@ -209,7 +205,7 @@ import Image from 'next/image';
                      <div className="mt-1 sm:mt-0 sm:col-span-2">
                        <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                          <div className="space-y-1 text-center">
-                             <FileUpload props={ {postId:0, flagGallery}}/>
+                             <BannerUpload props={ {postId:0, flagGallery}}/>
                          </div>
                        </div>
                      </div>

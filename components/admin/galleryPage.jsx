@@ -33,28 +33,6 @@ useEffect(()=>{
   return ()=> setCancelled(true)
 },[])
 
-
-// remove img from gallery
-function handleRemoveImg(id) {
-        
-  api.get("/delImg",{params: {
-  id: id,
-  }}).then((response) => {
-    setCancelled(!setCancelled);
-  })
-}
-
-// set IsMain Image
-function handleIsMain(id,post) {
-        
-  api.get("/isMain",{params: {
-  id: id,
-  post: post,
-  }}).then((response) => {
-    setCancelled(!setCancelled)
-      
-  })
-}
  
 return (
     <>

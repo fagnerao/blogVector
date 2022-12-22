@@ -40,7 +40,7 @@ export default function Pesquisa({post}){
                         <span aria-hidden="true">&middot;</span>
                         <span>{post.readingTime} read</span>
                       </div>
-                    </div>
+                    </div> 
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@ export async function getServerSideProps({ query }){
  
  const slug = query.search
  
- const res  = await fetch (`http://localhost:3001/search?search=${slug}`)
+ const res  = await fetch (`${process.env.baseURL}/search?search=${slug}`)
  const post = await res.json()
  
   return {

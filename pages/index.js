@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 // get last posts
 export async function getServerSideProps(){
   
-  const res   = await fetch (`http://localhost:3001/blog`)
+  const res   = await fetch (`${process.env.baseURL}/blog`)
   const data = await res.json()
   
    return {
@@ -68,7 +68,7 @@ export default function Home(props) {
                   </p>
                   <Link href={`pagina/${post.slug}`} className="block mt-2">
                     <p className="text-xl font-semibold capitalize text-gray-900">{post.title}</p>
-                    <div className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></div>
+                    <p className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></p>
                   </Link>
                 </div>
                 <div className="mt-6 flex items-center">
