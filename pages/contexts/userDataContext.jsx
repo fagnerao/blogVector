@@ -3,7 +3,7 @@ import { parseCookies } from 'nookies'
 
 export const userLoginContext = createContext([]);
 
-export function UserProvider ({ children }){
+export  default function UserProvider ({ children }){
   
   const [verifyUser, setVerifyUser] = useState(false)
   const [userData, setUserData] = useState('');

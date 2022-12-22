@@ -307,6 +307,7 @@ import Image from 'next/image';
                             <Image
                               width={150}
                               height={90} 
+                              alt="Banner"
                               src={banner.file} className="h-24 rounded-md"/>
                               </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 capitalize">{banner.title}</td>

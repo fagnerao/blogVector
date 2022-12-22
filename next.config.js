@@ -1,14 +1,7 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ['storage.googleapis.com', 'coinpayments.net'],
-    minimumCacheTTL: 1500000,
-  },
-  compiler: {
-    removeConsole: false,
-  },
-  swcMinify: true
+  /* config options here */
 }
 
 module.exports = {
@@ -20,7 +13,7 @@ module.exports = {
       {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
-        port: '',
+        port: '8080',
         pathname: '/vector_blog/**',
       },
     ],
