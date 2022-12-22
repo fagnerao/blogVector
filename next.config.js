@@ -6,14 +6,14 @@ const nextConfig = {
 
 module.exports = {
   env: {
-    baseURL:'http://localhost:3001',
+    baseURL:'https://blog-vector.vercel.app:3001',
    },
    images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
-        port: '8080',
+        port: '',
         pathname: '/vector_blog/**',
       },
     ],
