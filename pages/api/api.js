@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://blog-vector.vercel.app:3001',
+  baseURL: 'http://localhost:3001',
   headers: {                  
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Authorization", 
