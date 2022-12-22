@@ -7,14 +7,19 @@ import Navbar from '../components/Navbar';
 
 
 // get last posts
-export async function getServerSideProps(){
-  
+
+  export const getServerSideProps = async ({ req, res }) => {
+ try {
   const res   = await fetch (`${process.env.baseURL}/blog`)
   const data = await res.json()
   
    return {
     props: { posts: data.result  },
    }
+
+ } catch (error) {
+  console.log(error);
+ }
  }
 
 
