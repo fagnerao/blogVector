@@ -32,7 +32,7 @@ import Navbar from '../components/Navbar';
 
 
 export default function Home(props) {
- console.log("props",props.props.posts)
+ console.log("props",props.props.data.result)
  
   return (
      <>
@@ -63,7 +63,7 @@ export default function Home(props) {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {props.props.posts.map((post) => (
+          {props.props.data.result.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image
