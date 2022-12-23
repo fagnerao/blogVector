@@ -8,21 +8,21 @@ import Navbar from '../components/Navbar';
 
 // get last posts
 
-  export const getServerSideProps = async () => {
-   
+    Home.getInitialProps = async (ctx) => {
     try {
       const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
+
       console.log('dados data', data.result)
       
       return {
-        props: { posts: data.result  },
+        props: { data  },
       }
 
     } catch (error) {
       console.log('erro do sistema',error);
       return {
-        props: { posts: 'dados com erros'  },
+        notFound: true,
       }
     }
 
@@ -32,7 +32,7 @@ import Navbar from '../components/Navbar';
 
 
 export default function Home(props) {
-
+ console.log("props",props.props.posts)
  
   return (
      <>
@@ -63,7 +63,7 @@ export default function Home(props) {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {props.posts.map((post) => (
+          {props.props.posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image

@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 
 
 export default function Pesquisa({post}){
-  
+  console.log('dados do post', post)
   return (
     <>
     <Navbar/>
@@ -53,12 +53,12 @@ export default function Pesquisa({post}){
 }
 
 export async function getServerSideProps({ query }){
+  const slug = query.search
+  
+  const res  = await fetch (`${process.env.baseURL}/search?search=${slug}`)
+  const post = await res.json()
  
- const slug = query.search
- 
- const res  = await fetch (`${process.env.baseURL}/search?search=${slug}`)
- const post = await res.json()
- 
+  
   return {
     props: {
       post : post.result
