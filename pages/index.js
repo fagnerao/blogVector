@@ -10,13 +10,13 @@ import api from './api/api';
 
 // get last posts
 
-    Home.getInitialProps = async (ctx) => {
+export async function getStaticProps() {
     try {
       const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
-
+      const posts = data.result
       return {
-        props: { data  },
+        props: { posts  },
       }
 
     } catch (error) {
@@ -31,7 +31,7 @@ import api from './api/api';
 
 
 
-export default function Home(props) {
+export default function Home({posts}) {
   // const [posts, setPosts] = useState();
 
   // useEffect (()=>{
@@ -44,7 +44,7 @@ export default function Home(props) {
    
   // },[])
 
- console.log("props",props)
+ console.log("props",posts)
  
   return (
      <>
