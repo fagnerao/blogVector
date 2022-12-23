@@ -21,6 +21,10 @@ import Navbar from '../components/Navbar';
     } catch (error) {
       console.log('erro do sistema',error);
     }
+
+    return {
+      props: { posts: data.result  },
+    }
  }
 
 
