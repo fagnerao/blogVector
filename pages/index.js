@@ -1,38 +1,52 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import api from './api/api';
 
 
 
 
 // get last posts
 
-    Home.getInitialProps = async (ctx) => {
-    try {
-      const res  = await fetch (`${process.env.baseURL}/getblog`)
-      const data = await res.json()
+//     Home.getInitialProps = async (ctx) => {
+//     try {
+//       const res  = await fetch (`${process.env.baseURL}/getblog`)
+//       const data = await res.json()
 
-      console.log('dados data', data.result)
+//       console.log('dados data', data.result)
       
-      return {
-        props: { data  },
-      }
+//       return {
+//         props: { data  },
+//       }
 
-    } catch (error) {
-      console.log('erro do sistema',error);
-      return {
-        notFound: true,
-      }
-    }
+//     } catch (error) {
+//       console.log('erro do sistema',error);
+//       return {
+//         notFound: true,
+//       }
+//     }
 
- }
-
-
+//  }
 
 
-export default function Home(props) {
- console.log("props",props.props.data.result)
+
+
+export default function Home() {
+  const [posts, setPosts] = useState();
+
+  useEffect (()=>{
+    // get Post list 
+    api.get("/getBlog").then((response) => {
+      setPosts (response.data.result);
+        
+      });
+
+   
+  },[])
+
+ console.log("props",posts)
  
   return (
      <>
@@ -63,7 +77,7 @@ export default function Home(props) {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {props.props.data.result.map((post) => (
+          {posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image
