@@ -10,43 +10,41 @@ import api from './api/api';
 
 // get last posts
 
-//     Home.getInitialProps = async (ctx) => {
-//     try {
-//       const res  = await fetch (`${process.env.baseURL}/getblog`)
-//       const data = await res.json()
+    Home.getInitialProps = async (ctx) => {
+    try {
+      const res  = await fetch (`${process.env.baseURL}/getblog`)
+      const data = await res.json()
 
-//       console.log('dados data', data.result)
-      
-//       return {
-//         props: { data  },
-//       }
+      return {
+        props: { data  },
+      }
 
-//     } catch (error) {
-//       console.log('erro do sistema',error);
-//       return {
-//         notFound: true,
-//       }
-//     }
+    } catch (error) {
+      console.log('erro do sistema',error);
+      return {
+        notFound: true,
+      }
+    }
 
-//  }
+ }
 
 
 
 
-export default function Home() {
-  const [posts, setPosts] = useState();
+export default function Home(props) {
+  // const [posts, setPosts] = useState();
 
-  useEffect (()=>{
-    // get Post list 
-    api.get("/getBlog").then((response) => {
-      setPosts (response.data.result);
+  // useEffect (()=>{
+  //   // get Post list 
+  //   api.get("/getBlog").then((response) => {
+  //     setPosts (response.data.result);
         
-      });
+  //     });
 
    
-  },[])
+  // },[])
 
- console.log("props",posts)
+ console.log("props",props)
  
   return (
      <>
@@ -77,7 +75,7 @@ export default function Home() {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {/* {posts.map((post) => (
+          {posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image
@@ -112,7 +110,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          ))} */}
+          ))}
           
         </div>
       </div>
