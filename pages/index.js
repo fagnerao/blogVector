@@ -13,6 +13,7 @@ import Navbar from '../components/Navbar';
     try {
       const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
+      console.log('dados data', data.result)
       
       return {
         props: { posts: data.result  },
@@ -20,11 +21,11 @@ import Navbar from '../components/Navbar';
 
     } catch (error) {
       console.log('erro do sistema',error);
+      return {
+        props: { posts: 'dados com erros'  },
+      }
     }
 
-    return {
-      props: { posts: data.result  },
-    }
  }
 
 
