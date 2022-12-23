@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar';
   export const getServerSideProps = async () => {
    
     try {
-      const res  = await fetch (`${process.env.baseURL}/blog`)
+      const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
       
       return {
@@ -57,6 +57,7 @@ export default function Home(props) {
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+
           {props.posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
@@ -67,15 +68,17 @@ export default function Home(props) {
               </div>
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-indigo-600">
+                  <div className="text-sm font-medium text-indigo-600">
                     <a href={post.slug} className="hover:underline">
                       {post.category}
                     </a>
-                  </p>
+                  </div>
                   <Link href={`pagina/${post.slug}`} className="block mt-2">
                     <p className="text-xl font-semibold capitalize text-gray-900">{post.title}</p>
-                    <div className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></div>
                   </Link>
+                 
+                    <div className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></div>
+               
                 </div>
                 <div className="mt-6 flex items-center">
                   
@@ -91,6 +94,7 @@ export default function Home(props) {
               </div>
             </div>
           ))}
+          
         </div>
       </div>
     </div>

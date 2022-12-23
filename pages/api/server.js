@@ -231,7 +231,7 @@ app.get("/search", (req, res) => {
  * Get POst Blog
  */
 
- app.get("/blog", (req, res) => {
+ app.get("/getblog", (req, res) => {
   db.query("SELECT posts.* ,gallery.file ,category.category  FROM blog.posts left join category on category.id=posts.id_category left join gallery on gallery.id_page=posts.id  where gallery.is_main=1", [], (err, result) => {
     if (err) {
       res.send(err);
