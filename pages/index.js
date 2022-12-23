@@ -7,14 +7,20 @@ import Navbar from '../components/Navbar';
 
 
 // get last posts
-export async function getServerSideProps(){
 
-  const res   = await fetch (`${process.env.baseURL}/blog`)
-  const data = await res.json()
-  
-   return {
-    props: { posts: data.result  },
-   }
+  export const getServerSideProps = async () => {
+   
+    try {
+      const res  = await fetch (`${process.env.baseURL}/blog`)
+      const data = await res.json()
+      
+      return {
+        props: { posts: data.result  },
+      }
+
+    } catch (error) {
+      console.log('erro do sistema',error);
+    }
  }
 
 
@@ -68,7 +74,7 @@ export default function Home(props) {
                   </p>
                   <Link href={`pagina/${post.slug}`} className="block mt-2">
                     <p className="text-xl font-semibold capitalize text-gray-900">{post.title}</p>
-                    <p className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></p>
+                    <div className="mt-3 text-base text-gray-500" dangerouslySetInnerHTML={{__html: post.content}} ></div>
                   </Link>
                 </div>
                 <div className="mt-6 flex items-center">
