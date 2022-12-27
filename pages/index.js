@@ -6,26 +6,24 @@ import Navbar from '../components/Navbar';
 import api from './api/api';
 
 
+// // get last posts
 
+// export async function getStaticProps() {
+//     try {
+//       const res  = await fetch (`${process.env.baseURL}/getblog`)
+//       const data = await res.json()
+//       const posts = data.result
+//       return {
+//         props: { posts  },
+//       }
 
-// get last posts
+//     } catch (error) {
+//       return {
+//         notFound: true,
+//       }
+//     }
 
-export async function getStaticProps() {
-    try {
-      const res  = await fetch (`${process.env.baseURL}/getblog`)
-      const data = await res.json()
-      const posts = data.result
-      return {
-        props: { posts  },
-      }
-
-    } catch (error) {
-      return {
-        notFound: true,
-      }
-    }
-
- }
+//  }
 
 
 
