@@ -15,6 +15,7 @@ export async function getStaticProps() {
       const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
       const posts = data.result
+      console.log('dados no back', posts)
       return {
         props: { posts  },
       }
@@ -45,7 +46,7 @@ export default function Home({posts}) {
   // },[])
 
  console.log("props",posts)
- 
+ console.log('dados no fromt', props)
   return (
      <>
      <Navbar/>
@@ -75,7 +76,7 @@ export default function Home({posts}) {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {posts.map((post) => (
+          {/* {posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image
@@ -110,7 +111,7 @@ export default function Home({posts}) {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */}
           
         </div>
       </div>
