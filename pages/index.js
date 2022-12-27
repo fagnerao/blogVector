@@ -15,13 +15,11 @@ export async function getStaticProps() {
       const res  = await fetch (`${process.env.baseURL}/getblog`)
       const data = await res.json()
       const posts = data.result
-      console.log('dados no back', posts)
       return {
         props: { posts  },
       }
 
     } catch (error) {
-      console.log('erro do sistema',error);
       return {
         notFound: true,
       }
@@ -45,8 +43,8 @@ export default function Home({posts}) {
    
   // },[])
 
- console.log("props",posts)
- console.log('dados no fromt', props)
+ console.log("dados no front",posts)
+
   return (
      <>
      <Navbar/>
