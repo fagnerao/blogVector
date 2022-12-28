@@ -2,10 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+<<<<<<< HEAD
 import Posts from './Posts';
 
 export default function Home({posts}) {
  console.log('posts',posts)
+=======
+import Posts from '../components/Posts';
+import api from './api/api';
+
+
+
+
+
+export default function Home() {
+
+>>>>>>> main
 
   return (
      <>
@@ -34,6 +46,7 @@ export default function Home({posts}) {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
           </p>
         </div>
+<<<<<<< HEAD
         
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
@@ -69,6 +82,9 @@ export default function Home({posts}) {
             <span>{post.readingTime} read</span>
           </div>
         </div>
+=======
+        <Posts />
+>>>>>>> main
       </div>
     </div>
   </div>
