@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Posts from './Posts';
 
 export default function Home({posts}) {
-
+ console.log('posts',posts)
 
   return (
      <>
@@ -86,16 +86,16 @@ export default function Home({posts}) {
 
 
 
-export async function getServerSideProps() {
+Home.getInitialProps = async (ctx) => {
   try {
     // Fetch data from external API
     const res  = await fetch('http://localhost:3001/getBlog');
     const posts = await res.json();
-    console.log(posts);
+    console.log(posts.result);
     // Pass posts to the page via props
-    return { props: { posts: posts.result } }
+    return { posts: posts.result  }
   } catch (error) {
         console.log(error)
-        return { props: { posts: 'bosta' } }
+        return { props: { posts} }
   }
 }

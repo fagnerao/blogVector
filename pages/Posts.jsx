@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import api from '../pages/api/api';
+import api from './api/api';
 
 
 export default function Posts({data}) {
@@ -12,7 +12,7 @@ console.log('props interno', data)
 
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-          {/* {posts.map((post) => (
+          {posts.map((post) => (
             <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
                 <Image
@@ -48,7 +48,7 @@ console.log('props interno', data)
               </div>
             </div>
           ))}
-           */}
+          
         </div>
     
   )
