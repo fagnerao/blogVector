@@ -11,7 +11,7 @@ import Router from 'next/router';
     console.log(verifyUser)
       useEffect(() => {
       if(verifyUser != true){
-        //Router.push('/')
+        Router.push('/')
         
       };
     },[verifyUser])

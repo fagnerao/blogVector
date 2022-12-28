@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar';
 import GalleryPage from '../../components/admin/galleryPage';
 
 export default function Pagina({post}){
-  console.log('dados do post', post)
+  
   return (
     <>
     <Navbar/>
