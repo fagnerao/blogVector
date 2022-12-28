@@ -2,22 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-<<<<<<< HEAD
-import Posts from './Posts';
 
-export default function Home({posts}) {
- console.log('posts',posts)
-=======
-import Posts from '../components/Posts';
-import api from './api/api';
-
-
-
-
-
-export default function Home() {
-
->>>>>>> main
+export default function Home(props) {
+ console.log('posts',props)
 
   return (
      <>
@@ -46,11 +33,10 @@ export default function Home() {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
           </p>
         </div>
-<<<<<<< HEAD
         
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-{posts.map((post) => (
+{/* {posts.map((post) => (
   <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
     <div className="flex-shrink-0">
       <Image
@@ -82,13 +68,10 @@ export default function Home() {
             <span>{post.readingTime} read</span>
           </div>
         </div>
-=======
-        <Posts />
->>>>>>> main
       </div>
     </div>
   </div>
-))}
+))} */}
 
 </div>
           
@@ -107,9 +90,9 @@ Home.getInitialProps = async (ctx) => {
     // Fetch data from external API
     const res  = await fetch('http://localhost:3001/getBlog');
     const posts = await res.json();
-    console.log(posts.result);
+    console.log(posts);
     // Pass posts to the page via props
-    return { posts: posts.result  }
+    return { posts: posts  }
   } catch (error) {
         console.log(error)
         return { props: { posts} }
