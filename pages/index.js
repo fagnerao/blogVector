@@ -87,8 +87,13 @@ export default function Home({posts}) {
 
 Home.getInitialProps = async (ctx) => {
   try {
+
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+  };
     // Fetch data from external API
-    const res  = await fetch('http://localhost:3001/getBlog');
+    const res  = await fetch('http://localhost:3001/getBlog',requestOptions);
     const posts = await res.json();
     console.log(posts);
     // Pass posts to the page via props
