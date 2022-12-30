@@ -85,15 +85,9 @@ export default function Home({posts}) {
 
 
 export async function loadPosts() {
-  const requestOptions = {
-    method: 'GET',
-    headers: { 
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json;charset=UTF-8"   
-     },
-};
+ 
   // Fetch data from external API
-  const res  = await fetch('http://127.0.0.1:3001/getBlog',requestOptions);
+  const res  = await fetch('http://127.0.0.1:3001/getBlog');
   const data = await res.json();
 
   return data
