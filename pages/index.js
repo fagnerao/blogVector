@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
-export default function Home(props) {
- console.log('posts',props)
+export default function Home({posts}) {
+ console.log('posts',posts)
 
   return (
      <>
@@ -36,7 +36,7 @@ export default function Home(props) {
         
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-{/* {posts.map((post) => (
+{posts.result.map((post) => (
   <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
     <div className="flex-shrink-0">
       <Image
@@ -71,7 +71,7 @@ export default function Home(props) {
       </div>
     </div>
   </div>
-))} */}
+))}
 
 </div>
           
@@ -95,6 +95,6 @@ Home.getInitialProps = async (ctx) => {
     return { posts: posts  }
   } catch (error) {
         console.log(error)
-        return { props: { posts} }
+        return { props: posts.result }
   }
 }
