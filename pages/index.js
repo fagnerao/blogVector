@@ -84,22 +84,29 @@ export default function Home({posts}) {
 }
 
 
+export async function loadPosts() {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization", 
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE" ,
+      "Content-Type": "application/json;charset=UTF-8"   
+     },
+};
+  // Fetch data from external API
+  const res  = await fetch('http://localhost:3001/getBlog',requestOptions);
+  const data = await res.json();
 
-Home.getInitialProps = async (ctx) => {
-  try {
+  return data
+}
 
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-  };
-    // Fetch data from external API
-    const res  = await fetch('http://localhost:3001/getBlog',requestOptions);
-    const posts = await res.json();
-    console.log(posts);
-    // Pass posts to the page via props
-    return { posts: posts  }
-  } catch (error) {
-        console.log(error)
-        return { props: posts.result }
-  }
+
+export async function getStaticProps() {
+  // Instead of fetching your `/api` route you can call the same
+  // function directly in `getStaticProps`
+  const posts = await loadPosts()
+
+  // Props returned will be passed to the page component
+  return { props: { posts } }
 }
