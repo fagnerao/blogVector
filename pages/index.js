@@ -93,7 +93,7 @@ export async function loadPosts() {
      },
 };
   // Fetch data from external API
-  const res  = await fetch('http://localhost:3001/getBlog',requestOptions);
+  const res  = await fetch('http://127.0.0.1:3001/getBlog',requestOptions);
   const data = await res.json();
 
   return data
@@ -106,5 +106,5 @@ export async function getStaticProps() {
   const posts = await loadPosts()
 
   // Props returned will be passed to the page component
-  return { props: { posts } }
+  return { props: {posts} }
 }
